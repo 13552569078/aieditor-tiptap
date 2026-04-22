@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(dir \"d:\\\\ai-study\\\\tiptap\")",
+      "Bash(dir \"d:\\\\ai-study\\\\my-tiptap-project\")",
+      "Bash(npm create *)",
+      "Bash(npm init *)",
+      "Bash(npm pkg *)",
+      "Bash(npm install *)",
+      "Bash(npm view *)",
+      "Bash(npm run *)",
+      "WebFetch(domain:localhost)",
+      "Bash(curl -s http://localhost:5174)",
+      "Bash(npx tsc *)"
+    ]
+  }
+}

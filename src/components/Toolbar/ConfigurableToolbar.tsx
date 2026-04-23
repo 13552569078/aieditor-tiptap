@@ -2,20 +2,22 @@ import { Editor } from '@tiptap/react';
 import { Tooltip, Dropdown, Menu } from '@arco-design/web-react';
 import { ToolbarItem, DEFAULT_TOOLBAR_CONFIG } from './toolbarConfig';
 import './ConfigurableToolbar.css';
+import { RefObject } from 'react';
 
 interface ConfigurableToolbarProps {
   editor: Editor | null;
   config?: ToolbarItem[];
+  editorRef?: RefObject<HTMLDivElement>;
 }
 
-export function ConfigurableToolbar({ editor, config = DEFAULT_TOOLBAR_CONFIG }: ConfigurableToolbarProps) {
+export function ConfigurableToolbar({ editor, config = DEFAULT_TOOLBAR_CONFIG, editorRef }: ConfigurableToolbarProps) {
   if (!editor) {
     return null;
   }
 
   const handleClick = (item: ToolbarItem) => {
     if (item.action) {
-      item.action(editor);
+      item.action(editor, editorRef);
     }
   };
 
@@ -58,7 +60,7 @@ export function ConfigurableToolbar({ editor, config = DEFAULT_TOOLBAR_CONFIG }:
           <Menu onClickMenuItem={(key) => {
             const child = item.children?.find((c) => c.id === key);
             if (child?.action) {
-              child.action(editor);
+              child.action(editor, editorRef);
             }
           }}>
             {item.children.map((child) => (
